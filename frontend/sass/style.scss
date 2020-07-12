@@ -113,13 +113,12 @@ section{
         justify-content: space-around;
     }
 }
-// mise en forme d'un bloc article
+// mise en forme d'un bloc article home
 
-article{
+.article{
     align-items: center;
     width: 90%;
     margin-top: 5%;
-    background-color: rgb(165, 162, 162);
     text-align: center;
     padding: 10px;
     @include tablette{
@@ -244,4 +243,174 @@ footer{
     }
   }
 
+}
+
+// page article 
+
+ #bloc-product{
+  align-items: center;
+  width: 90%;
+  margin-top: 5%;
+  background-color: $ours4;
+  text-align: center;
+  padding: 10px 0px 30px 0px;
+  @include tablette{
+      width: 80%;
+  }
+  @include ecran{
+      width: 60%;
+  }
+  h2{
+    font-family: 'Pacifico', cursive;
+    color:#000;
+    font-size: 3rem;
+  }
+
+  img{
+    width:85%;
+    background-color: $text;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+  #selecteurs{
+    display: block;
+    @include tablette_ecran{
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  #selecteur-couleur{
+    margin-bottom: 5%;
+    font-family: 'Pacifico', cursive;
+    color:$general;
+    font-size: 1.3rem;
+    margin-right: 2%;
+    select{
+      width: 30%;
+      background-color: $general;
+      color: #fff;
+      border: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      @include tablette_ecran{
+        width: 90%;
+      }
+    }
+  }
+  #selecteur-nombre{
+    margin-bottom: 5%;
+    font-family: 'Pacifico', cursive;
+    color:$general;
+    font-size: 1.3rem;
+    margin-right: 2%;
+    select{
+      width: 20%;
+      background-color: $general;
+      color: #fff;
+      border: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      @include tablette_ecran{
+        width: 70%;
+      }
+    }
+  }
+  .infos{
+    display: block;
+    background-color: #fff;
+    width: 95%;
+    padding: 5px;
+    margin: auto;
+    @include ecran{
+      display: flex;
+      }
+  }
+  #first-bloc{
+    display: none;
+    @include tablette{
+      display: block;
+      text-align: center;
+      padding: 2%;
+    }
+    @include ecran{
+      display: block;
+      text-align: center;
+      padding: 2%;
+      width: 30%;
+      margin-right: 10%;
+    } 
+  }  
+  #first-bloc__mobile{
+    width: 90%;
+    text-align: center;
+    padding: 2%;
+    @include tablette_ecran{
+      display: none;
+    }
+  }
+  
+  .description{
+    font-family: 'Roboto', sans-serif;
+    color:$text;
+    font-size: 0.8rem;
+    text-align: left;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    @include ecran{
+      margin-left: 0;
+    }
+  }
+
+  #second-bloc{
+    width: 90%;
+    @include ecran{
+      width: 60%;
+    }
+  }
+  .align{
+    display: flex;
+    justify-content: space-around;
+  }
+  .prix{
+    font-family: 'Roboto', sans-serif;
+    color: $general;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  .want-some{
+    width: 60%;
+    border-radius: 9px;
+    background-color: #000;
+    text-align: center;
+    height: 30px;
+    .fas{
+      color: #fff;
+    }
+  }
+  #ajouter{
+    background-color: #000;
+    color:#fff;
+    font-size: 1rem;
+    font-style: italic;
+    border: none;
+    border-radius: 40px;
+    padding: 7px;
+    height: 25px;
+  }
+  &.article__first{
+    background-color: $ours1;
+  }
+  &.article__two{
+    background-color: $ours2;
+  }
+  &.article__three{
+    background-color: $ours3;
+  }
+  &.article__four{
+    background-color: $ours4;
+  }
+  &.article__five{
+    background-color: $ours5;
+  }
 }
