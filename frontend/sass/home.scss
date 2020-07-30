@@ -1,0 +1,158 @@
+#content-catalogue{
+    width: 100%;
+    max-width: 980px;
+    margin: auto;
+    z-index: 2;
+}
+section{
+  margin-top: 4%;
+  @include tablette_ecran{
+    margin-top: 0;
+  }
+}
+
+#catalogue{
+  z-index: 2;
+  margin-top: -140px;
+  @include tablette_ecran{
+    margin-top: 0;
+  }
+}
+
+
+#catalogue h1{        
+  font-family: 'Pacifico', cursive;
+  color:$logo4;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 100;
+  margin-top: 0;
+  @include tablette_ecran{
+    font-size: 3rem;
+    background-color: $logo4;
+    color:#fff;
+  }
+}
+
+#ensemble-article{        
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include tablette{
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+  @include ecran{
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+}
+
+// mise en forme d'un bloc article home
+
+.article{
+    transform: none;
+    align-items: center;
+    width: 90%;
+    margin-top: 3%;
+    text-align: center;
+    padding: 10px;
+    @include tablette{
+        width: 45%;
+        transform: scale(1);
+        transition: transform 400ms;
+    }
+    @include ecran{
+        width: 30%;
+        transform: scale(1);
+        transition: transform 400ms;
+    }
+    h2{
+      font-family: 'Pacifico', cursive;
+      color:#fff;
+      font-size: 2rem;
+      font-weight: 100;
+    }
+    .image-product{
+      margin-top: 6%;
+      margin-bottom: 3%;
+      width: 100%;
+    }
+    img{
+      width:94%;
+      max-height: 167px;
+      background-color: $text;
+    }
+    .infos{
+      background-color: #fff;
+      width: 95%;
+      padding: 5px;
+      margin: auto;
+    }
+    .description{
+      font-family: 'Roboto', sans-serif;
+      color:$text;
+      font-size: 0.8rem;
+      text-align: left;
+      margin-bottom: 15px;
+    }
+    .align{
+      display: flex;
+      justify-content: space-around;
+    }
+    .prix{
+      font-family: 'Roboto', sans-serif;
+      color: $logo2;
+      font-weight: 600;
+      font-size: 2rem;
+    }
+    .want-some{
+      width: 60%;
+      border-radius: 9px;
+      background-color: $logo4;
+      text-align: center;
+      height: 30px;
+      padding-top: 2%;
+      .fas{
+        color: $general;
+      }
+    }
+    #ajouter{
+      background-color: $logo4;
+      color:$general;
+      font-size: 1rem;
+      font-style: italic;
+      font-family: 'Roboto', sans-serif;
+      height: 25px;
+      text-decoration: none;
+    }
+    &.product-color0{
+      background-color: $ours2;
+    }
+    &.product-color1{
+      background-color: $ours1;
+    }
+    &.product-color2{
+      background-color: $ours3;
+    }
+    &.product-color3{
+      background-color: $ours5;
+    }
+    &.product-color4{
+      background-color: $ours4;
+    }
+}
+.article:hover{
+  background-color: $logo4;
+  @include tablette_ecran{
+    transform: scale(1.1);
+  }
+  .want-some{
+    background-color: $logo2;
+  }
+  #ajouter{
+    background-color: $logo2;
+  }
+}

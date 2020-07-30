@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Roboto:ital,wght@0,400;0,700;1,500&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/779ac07472.js" crossorigin="anonymous"></script>
+    <title>Orinoco</title>
+</head>
+
+<body>
+    <!--popup alert-->
+    <div id="popup"></div>
+    <div id="popup-content">
+        <div>
+            <div id="popup-head"></div>
+            <div id="popup-text"></div>
+        </div>
+    </div>
+    <!--/////////////////-->
+
+    <header>
+        <div id="orinoco" >
+            <img src="image/logo.png" alt="logo">
+        </div>
+    </header>
+    <nav id="navigation">
+        <a href="#wrap" id="open">
+            <i class="fas fa-bars"></i>
+        </a>
+        <div id="icon-content">
+            <div id="icon-left">
+                <div id="icon-home"><a href="home.html"><i class="fas fa-home"></i></a></div>
+                <div class="camera-icon"><a href="#"></a><i class="fas fa-camera"></i></div>
+                <div class="svg-ours"><a href="index.html">blablabl</a></div>
+                <div class="svg-meuble"><a href="#"></a></div>
+            </div>
+            <div id="icon-right">
+                <div id="icon-card-align">
+                    <div><a href="card.html"><i class="fas fa-shopping-bag"></i></a></div>
+                    <div class="card-nbr"></div>
+                </div> 
+            </div>
+        </div>
+    </nav>
+    <!--Affichage menu mobile-->
+    <div id="wrap">
+        <div class="burger">
+          <nav class="nav">
+            <a href="#" id="close">×</a>
+            <a href="home.html">Home</a>
+            <a href="#">Caméras</a>
+            <a href="index.html">Ours en peluche</a>
+            <a href="#">Meubles en chêne</a>
+          </nav>
+        </div>
+    </div>
+    <div id="content">
+        <h2>Votre commande</h2>
+        <section id="card">
+            <div id="card-back">
+            </div>
+        </section>
+        <h2>Vos coordonnées</h2>
+        <section id="contact">
+            <div id="contact-back">    
+                <form>
+                    <table>
+                        <tr>
+                            <td class="label"><p><label>Nom </label></p></td>
+                            <td><input class="input" id="contact-nom" type="text" name="nom"  value="Nom" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><p><label>Prénom </label></p></td>
+                            <td><input class="input" id="contact-prenom" type="text" name="prenom" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><p><label>Numéro </label></p></td>
+                            <td><input class="input" id="contact-num" type="text" name="number" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><p><label>Voie </label></p></td>
+                            <td><input class="input" id="contact-voie" type="text" name="voie" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><p><label><span id="cp-mobile">CP</span><span id="cp">Code Postal</span></label></p></td>
+                            <td><input class="input" id="contact-CP" type="text" name="codepostal" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><p><label>Ville  </label></p></td>
+                            <td><input class="input" id="contact-ville" type="text" name="ville" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><p><label>Email  </label></p></td>
+                            <td><input class="input" id="contact-mail" type="email" name="email" required></td>
+                        </tr>               
+                    </table>
+                    <button id="envoyer">Envoyer</button>
+
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <ul>
+            <li>A propos</li>
+            <li>Contact</li>
+            <li>Mentions légales</li>
+            <li>CGV</li>
+        </ul>
+    </footer>
+    <div id="ours-dessin"><img src="image/ours-dessin.jpg" alt="ours dessin"></div>
+</body>
+<script type="text/javascript" src="card.js"></script>
+
+</html>

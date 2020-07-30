@@ -1,0 +1,125 @@
+#HP{
+    background-image: none;
+    background-color: #F3E8F0;
+  }
+  #wrap-home{
+    width: 100%;
+    max-width: 980px;
+    margin: auto;
+  }
+  #logo {
+    margin-top: 13%;
+    text-align: center;
+    @include tablette_ecran{
+    margin-top: 15%;
+    }
+    img{
+      width: 80%;
+    }
+  }
+  #section-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tablette_ecran{ 
+    flex-direction: row;
+    justify-content: space-around;
+    }
+  }
+  
+  #camera,#bear,#furniture{
+    width: 80%;
+    background-color: #2d232b;
+    text-align: center;
+    padding: 6% 0% 6% 0%;
+    margin-bottom: 5%;
+    @include tablette_ecran{
+      margin-bottom: 0;
+      width: 30%;
+    }
+    .envie{
+      font-weight: 100;
+      color: #fff;
+      font-size: 1.3rem;
+      margin: 6% 0% 6% 0%;
+      @include tablette_ecran{
+        font-size: 1.7rem;
+        margin: 6% 0% 15% 0%;
+      }
+    }
+  }
+  #camera .envie{
+    font-family: 'Dancing Script', cursive;
+  }
+  #bear .envie{
+    font-family: 'Pacifico', cursive;
+  }
+  #furniture .envie{
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .svg-bear{
+    margin: auto;
+    width: 17%;
+    height: 35px;
+    background-color: #fff;
+    mask: url(image/ours-icon.svg);
+    -webkit-mask:url(image/ours-icon.svg);
+    -webkit-mask-repeat: no-repeat;
+    @include tablette_ecran{
+      width: 33%;
+      height: 76px;
+    }
+  }
+  .svg-furniture{
+    margin: auto;
+    width: 24%;
+    height: 32px;
+    background-color: #fff;
+    mask: url(image/furniture-icon2.svg);
+    -webkit-mask:url(image/furniture-icon2.svg);
+    -webkit-mask-repeat: no-repeat;
+    @include tablette_ecran{
+      width: 47%;
+      height: 76px;
+    }
+  }
+  .fa-camera{
+    color: #FFF;
+    font-size: 2rem;
+    @include tablette_ecran{
+      font-size: 5rem;
+    }
+  }
+  .acces-pages{
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    height: 30px;
+    border-radius: 5px;
+    color: #000;
+    text-decoration: none;
+    @include tablette_ecran{
+      padding-top: 2%;
+      width: 80%;
+      height: 40px;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      @include tablette_ecran{
+        font-size: 1.5rem;
+      }
+    }
+  }
+  #camera .acces-pages{
+    background-color: #e68a08;
+  }
+  #bear .acces-pages{
+    background-color: #ac6bab;
+  }
+  #furniture .acces-pages{
+    background-color: #8f5bfe;
+  }

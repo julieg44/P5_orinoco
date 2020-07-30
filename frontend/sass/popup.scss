@@ -1,0 +1,59 @@
+#popup{
+    display: none;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  #popup-content{
+    display: none;
+    position: fixed;
+    top: 200px;
+    background-image: url(image/oursAlert.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top; 
+    border-radius: 7px;
+    width: 260px;
+    height: 230px;
+    z-index: 10;
+    @include tablette{
+      width: 400px;
+      top: 200px;
+    }
+    @include ecran{
+      width: 400px;
+      top: 200px;
+    }
+    #popup-head{
+      padding: 10px;
+      text-align: right;
+      button{
+        background: #000;
+        color: #FFF;
+        width: 40px;
+        height: 40px;
+        border-radius: 30px;
+        border: none;
+        font-size: 1rem;
+      }
+    }
+    #popup-text{
+      font-family: 'Pacifico', cursive;
+      font-size: 1.5rem;
+      color: $logo2;
+      padding:20px;
+      @include tablette_ecran{
+        font-size: 1.8rem;
+      }
+    }
+    #popup-foot{
+      background-color: #666;
+      text-align: left;
+      padding: 10px;
+    }
+  }

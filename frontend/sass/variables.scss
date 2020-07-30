@@ -1,0 +1,37 @@
+//colors :
+$background:#F3E8F0;
+$logo1: #e68a08;
+$logo2: #ac6bab;
+$logo3: #8f5bfe;
+$logo4: #2d232b;
+
+$ours1:#464145;
+$ours2:#5e575d;
+$ours3:#797077;
+$ours4:#a0949e;
+$ours5:#bfb1bc;
+$general:#fff;
+$text:#706d6d;
+
+/// mediaqueries
+$breakpoints: (
+  tablette : 769px,
+  mobile : 570px);
+
+
+@mixin ecran {
+  @media screen and (min-width : map-get($breakpoints, tablette)){
+    @content
+  }
+}
+@mixin tablette {
+  @media screen and (min-width : map-get($breakpoints, mobile)) and (max-width : map-get($breakpoints, tablette )){
+    @content
+  }
+}
+
+@mixin tablette_ecran {
+  @media screen and (min-width : map-get($breakpoints, mobile)){
+    @content
+  }
+}
