@@ -32,7 +32,7 @@
     #popup-head{
       padding: 10px;
       text-align: right;
-      button{
+      #fermer{
         background: #000;
         color: #FFF;
         width: 40px;
@@ -50,10 +50,5 @@
       @include tablette_ecran{
         font-size: 1.8rem;
       }
-    }
-    #popup-foot{
-      background-color: #666;
-      text-align: left;
-      padding: 10px;
     }
   }

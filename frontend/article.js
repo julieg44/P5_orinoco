@@ -171,15 +171,18 @@ const oursSelect = async function (){
                 popup.style.display = 'block';
                 popup.style.height = winH + 'px';
                 popupContent.style.left = (winW/2) - (400 * .5) + 'px';
+                if (winW < 569){
+                    popupContent.style.left = (winW/2) - (260 * .5) + 'px';
+                }
                 // popupContent.style.top = "100px";
                 popupContent.style.display = "block";
                 // document.getElementById('popup-head').innerHTML = ' <button onclick = "alert.ok()" > X </button> ';
-                document.getElementById('popup-head').innerHTML = ' <button id="close"> X </button> ';
+                document.getElementById('popup-head').innerHTML = ' <button id="fermer"> X </button> ';
                 document.getElementById('popup-text').innerHTML = dialog;
                 // document.getElementById('popup-foot').innerHTML = ' <button onclick = "alert.ok()" > OK </button> ';
                 // let footerAlert = document.getElementById('popup-head');
                 // let buttonAlert = document.get('input');
-                let buttonAlert = document.getElementById('close');
+                let buttonAlert = document.getElementById('fermer');
                 console.log(buttonAlert);
                 buttonAlert.addEventListener ('click', function(){
                     document.getElementById('popup').style.display = 'none';
@@ -214,7 +217,7 @@ const oursSelect = async function (){
         let ajoutPanierBtn = document.getElementById('ajouter');
         ajoutPanierBtn.addEventListener ('click', function(e){
             if ((colorTeddySelect == null) || (nbrTeddySelect == 0)){
-                alert.render("choisir un colori\net un nombre d'article !");
+                alert.render("choisir un nombre d'article !");
             }
 
             for (let i = 0; i < oursDetail.colors.length; i++){
@@ -242,7 +245,6 @@ const oursSelect = async function (){
                         console.log(panierFinal);
                         AfficherPastille(panierFinal);
                         pastillePanier.style.display = 'block';
-                        pastillePanierMobile.style.display = 'block';
                     }   
                 }
             }

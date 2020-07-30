@@ -11,10 +11,13 @@ function custumAlert (){
         popup.style.display = 'block';
         popup.style.height = winH + 'px';
         popupContent.style.left = (winW/2) - (400 * .5) + 'px';
+        if (winW < 569){
+            popupContent.style.left = (winW/2) - (260 * .5) + 'px';
+        }
         popupContent.style.display = "block";
-        document.getElementById('popup-head').innerHTML = ' <button id="close"> X </button> ';
+        document.getElementById('popup-head').innerHTML = ' <button id="fermer"> X </button> ';
         document.getElementById('popup-text').innerHTML = dialog;
-        let buttonAlert = document.getElementById('close');
+        let buttonAlert = document.getElementById('fermer');
         buttonAlert.addEventListener ('click', function(){
             document.getElementById('popup').style.display = 'none';
             document.getElementById('popup-content').style.display = 'none';

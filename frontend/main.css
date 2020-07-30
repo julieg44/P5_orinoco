@@ -61,7 +61,7 @@ header #orinoco img {
 }
 
 #wrap:not(:target) {
-  transform: translate3d(-400px, -300px, 0);
+  transform: translate3d(-400px, -500px, 0);
 }
 
 #wrap:target {
@@ -307,7 +307,7 @@ footer li {
   padding: 10px;
   text-align: right;
 }
-#popup-content #popup-head button {
+#popup-content #popup-head #fermer {
   background: #000;
   color: #FFF;
   width: 40px;
@@ -326,11 +326,6 @@ footer li {
   #popup-content #popup-text {
     font-size: 1.8rem;
   }
-}
-#popup-content #popup-foot {
-  background-color: #666;
-  text-align: left;
-  padding: 10px;
 }
 
 #HP {
