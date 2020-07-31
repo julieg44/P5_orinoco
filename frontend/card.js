@@ -83,6 +83,7 @@ function afficherPanier(panierFinal){
                     })
                     let totalPanierBloc = document.getElementsByClassName('total-panier-bloc');
                     console.log(totalPanierBloc);
+                    AfficherPastille(panierFinal);
                     totalPanierBloc[0].innerHTML = prixTotal + '€';
                     /////////////////////////
                 
@@ -91,6 +92,7 @@ function afficherPanier(panierFinal){
                         return item !== produit;
                     })
                 fondPanier.removeChild(ligneArticlePanier);
+                fondPanier.style.display ='none';
                 localStorage.setItem('article', JSON.stringify(panierFinal)); 
                 // panierFinal = JSON.parse(localStorage.getItem('article'));
                 console.log(panierFinal.length);
@@ -187,15 +189,17 @@ function AfficherPrixTotal(panier){
                     fondPanier.removeChild(ligneArticlePanier);
                 })
             localStorage.clear(); 
-            alert.render('Votre panier est vide !')   
+            alert.render('Votre panier est vide !');
+            pastillePanier.style.display = 'none'; 
+            fondPanier.style.display ='none'  
             }
     }
 
     function AfficherPastille(panier){
         let nbrArticleTotal = 0 
         panier.forEach(function(lignePanier){
-             let resultat = lignePanier.qte;
-             nbrArticleTotal = nbrArticleTotal +++ resultat;
+             let resultat = parseInt(lignePanier.qte);
+             nbrArticleTotal = nbrArticleTotal + resultat;
              console.log(nbrArticleTotal);
         }) 
         let pastillePanier = document.querySelector('div .card-nbr');
@@ -210,10 +214,10 @@ function AfficherPrixTotal(panier){
 
 
      function envoyerCommande(){
-        class contact {
+        class Contact {
             constructor (nom, prenom, num, voie, cp, ville, mail){
-                this.nom = nom;
-                this.prenom = prenom;
+                this.lastName = nom;
+                this.name = prenom;
                 this.num = num;
                 this.voie = voie;
                 this.cp = cp;
@@ -221,15 +225,15 @@ function AfficherPrixTotal(panier){
             }
         }
 
-        // let formulaireNom = document.getElementById('contact-nom');
-        // console.log(formulaireNom);
-        // formulaireNom.addEventListener('change', function(){
+        let formulaireNom = document.getElementById('contact-nom');
+        console.log(formulaireNom);
+        // formulaireNom.addEventListener('keyup', function(){
         //     formulaireNom.value = event.target.value;
         //     console.log(formulaireNom.value);
         //     console.log(formulaireNom);
         // })
-        // console.log(formulaireNom);
-        // console.log(formulaireNom.value);
+        console.log(formulaireNom);
+        console.log(formulaireNom.value);
 
         // let contactFinal = new contact (formulaireNom.value,);
         // console.log(contactFinal);
@@ -253,39 +257,19 @@ function AfficherPrixTotal(panier){
             for (let i = 0; i < panierFinal.length; i++){
                 products.push({'id': panierFinal[i].id});
                 console.log(panierFinal[i].id);
-                }
-            console.log(products);
+            }
+            let contact = new Contact (formulaireNom.value,);
+
+            console.log(JSON.stringify([products, contact]));
             var request = new XMLHttpRequest();
             request.open("POST", "http://localhost:3000/api/teddies/order");
             request.setRequestHeader("Content-Type", "application/json");
-            request.send(JSON.stringify(products));
+            request.send(JSON.stringify([products, contact]));
+
         })
         console.log(products);
      }
 
 
 
-     class contact {
-        constructor (nom, prenom, num, voie, cp, ville, mail){
-            this.nom = nom;
-            this.prenom = prenom;
-            this.num = num;
-            this.voie = voie;
-            this.cp = cp;
-            this.mail = mail;
-        }
-    }
 
-     let formulaireNom = document.getElementById('contact-nom');
-     console.log(formulaireNom);
-     formulaireNom.addEventListener('change', function(){
-        console.log(formulaireNom.value);
-         formulaireNom.value = event.target.value;
-         console.log(formulaireNom.value);
-         console.log(formulaireNom);
-     })
-     console.log(formulaireNom);
-     console.log(formulaireNom.value);
-
-     let contactFinal = new contact (formulaireNom.value,);
-     console.log(contactFinal);

@@ -94,7 +94,7 @@ if (panierFinal === null){
 function AfficherPastille(panier){
     let nbrArticleTotal = 0 
     panier.forEach(function(lignePanier){
-         let resultat = lignePanier.qte;
+         let resultat = parseInt(lignePanier.qte);
          nbrArticleTotal = nbrArticleTotal +++ resultat;
          console.log(nbrArticleTotal);
     }) 

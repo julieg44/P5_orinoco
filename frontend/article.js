@@ -255,13 +255,13 @@ const oursSelect = async function (){
 function AfficherPastille(panier){
     let nbrArticleTotal = 0 
     panier.forEach(function(lignePanier){
-            let resultat = lignePanier.qte;
-            nbrArticleTotal = nbrArticleTotal +++ resultat;
-            console.log(nbrArticleTotal);
+            let resultat = parseInt(lignePanier.qte);
+            nbrArticleTotal = nbrArticleTotal + resultat;
     }) 
+    console.log(nbrArticleTotal);
     let pastillePanier = document.querySelector('div .card-nbr');
     pastillePanier.innerHTML = nbrArticleTotal;
-    }
+}
 
 
 
