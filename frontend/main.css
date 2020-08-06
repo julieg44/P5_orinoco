@@ -547,6 +547,7 @@ section {
 }
 
 .article {
+  background-color: #fff;
   transform: none;
   align-items: center;
   width: 90%;
@@ -583,6 +584,11 @@ section {
   width: 94%;
   max-height: 167px;
   background-color: #706d6d;
+}
+@media screen and (min-width: 570px) and (max-width: 769px) {
+  .article img {
+    max-height: 215px;
+  }
 }
 .article .infos {
   background-color: #fff;
@@ -1070,6 +1076,98 @@ table {
 
 .titre-adresse {
   text-align: left;
+}
+
+#confirm {
+  margin-top: -30%;
+}
+@media screen and (min-width: 570px) {
+  #confirm {
+    margin-top: -3%;
+  }
+}
+
+.confirm {
+  width: 80%;
+  background-color: #fff;
+  margin: auto;
+  font-family: "Pacifico", cursive;
+  color: #706d6d;
+  text-align: center;
+  padding: 10% 10% 10% 10%;
+}
+.confirm .merci {
+  font-size: 1.5rem;
+  margin-top: 4%;
+}
+@media screen and (min-width: 570px) {
+  .confirm .merci {
+    font-size: 2rem;
+  }
+}
+.confirm .montant {
+  font-size: 1rem;
+  margin-top: 4%;
+}
+@media screen and (min-width: 570px) {
+  .confirm .montant {
+    font-size: 1.5rem;
+  }
+}
+.confirm .rose {
+  color: #ac6bab;
+}
+.confirm .rose.order {
+  font-family: "Roboto", sans-serif;
+}
+.confirm .numero {
+  font-size: 1rem;
+  margin-top: 4%;
+}
+@media screen and (min-width: 570px) {
+  .confirm .numero {
+    font-size: 1.5rem;
+  }
+}
+.confirm .bientot {
+  font-size: 1.5rem;
+  margin-top: 4%;
+}
+@media screen and (min-width: 570px) {
+  .confirm .bientot {
+    font-size: 2rem;
+  }
+}
+.confirm .retour {
+  width: 15%;
+  background-color: #000;
+  margin-top: 4%;
+  border-radius: 30px;
+  border: none;
+  padding: 3% 3% 3% 3%;
+}
+.confirm .retour .fas {
+  color: #fff;
+  font-size: 1rem;
+}
+@media screen and (min-width: 570px) {
+  .confirm .retour .fas {
+    font-size: 2rem;
+  }
+}
+
+#black {
+  opacity: 0.8;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+}
+
+#ours-dessin {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */
