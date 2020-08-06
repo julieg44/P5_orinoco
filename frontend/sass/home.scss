@@ -53,6 +53,7 @@ section{
 // mise en forme d'un bloc article home
 
 .article{
+    background-color: #fff;
     transform: none;
     align-items: center;
     width: 90%;
@@ -84,6 +85,9 @@ section{
       width:94%;
       max-height: 167px;
       background-color: $text;
+      @include tablette{
+        max-height: 215px;
+      }
     }
     .infos{
       background-color: #fff;

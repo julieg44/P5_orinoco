@@ -1,0 +1,80 @@
+#confirm{
+    margin-top: -30%;
+    @include tablette_ecran{
+        margin-top: -3%;
+    }
+}
+
+.confirm{
+    width: 80%;
+    background-color: $general;
+    margin: auto;
+    font-family: 'Pacifico', cursive;
+    color: $text;
+    text-align: center;
+    padding: 10% 10% 10% 10%;
+    .merci{
+        font-size: 1.5rem;
+        margin-top: 4%;
+        @include tablette_ecran{
+            font-size: 2rem;
+        }
+    }
+    .montant{
+        font-size: 1rem;
+        margin-top: 4%;
+        @include tablette_ecran{
+            font-size: 1.5rem;
+        }
+    }
+    .rose{
+        color: $logo2;
+        &.order{
+            font-family: 'Roboto', sans-serif;
+        }
+    }
+    .numero{
+        font-size: 1rem; 
+        margin-top: 4%;
+        @include tablette_ecran{
+            font-size: 1.5rem;
+        }
+    }
+    .bientot{
+        font-size: 1.5rem;
+        margin-top: 4%;
+        @include tablette_ecran{
+            font-size: 2rem;
+        }
+    }
+    .retour{
+        width: 15%;
+        background-color: #000;
+        margin-top: 4%;
+        border-radius: 30px;
+        border: none;
+        padding: 3% 3% 3% 3%;
+
+        .fas{
+            color: #fff;
+            font-size: 1rem;
+            @include tablette_ecran{
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+#black{
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+    width: 100%;
+    height: 100%;  
+}
+
+#ours-dessin{
+    display: none;
+}
