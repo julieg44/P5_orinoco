@@ -134,7 +134,7 @@ const oursSelect = async function (){
                 selectColor.appendChild(optionColor);
             }
     
-            for (let i = 0; i < 10; i++){
+            for (let i = 1; i < 10; i++){
                 let option = document.createElement ('option');
                 option.value = i;
                 option.innerHTML = i;
@@ -145,7 +145,7 @@ const oursSelect = async function (){
         let optionColor = document.querySelector('option');
         let colorTeddySelect = optionColor.value;
         console.log(colorTeddySelect);
-        let nbrTeddySelect = 0;
+        let nbrTeddySelect = 1;
 
         document.querySelector('select[name="produit"]').onchange=changeCouleur;
         function changeCouleur(event){
@@ -218,7 +218,9 @@ const oursSelect = async function (){
         ajoutPanierBtn.addEventListener ('click', function(e){
             if ((colorTeddySelect == null) || (nbrTeddySelect == 0)){
                 alert.render("choisir un nombre d'article !");
+                return false;
             }
+            console.log('stop');
 
             for (let i = 0; i < oursDetail.colors.length; i++){
                 if (oursDetail.colors[i] == colorTeddySelect){

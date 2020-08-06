@@ -35,7 +35,7 @@ var alert = new custumAlert();
 let fondPanier = document.getElementById('card-back');
 
 if (panierFinal === null){
-    alert.render('Votre panier est vide !');
+    alert.render('Votre panier<br> est vide !');
     fondPanier.style.display ='none'  
 }   
 
@@ -110,7 +110,7 @@ function afficherPanier(panierFinal){
                     let ligneViderPanier = document.querySelector('.vider-panier');
                     fondPanier.removeChild(ligneViderPanier);
                     AfficherPastille(panierFinal);
-                    alert.render('Votre panier est vide !')
+                    alert.render('Votre panier<br>est vide !')
                 }
             }
          //////////////////
@@ -192,7 +192,7 @@ function ViderPanier(panier){
                 fondPanier.removeChild(ligneArticlePanier);
             })
         localStorage.clear(); 
-        alert.render('Votre panier est vide !');
+        alert.render('Votre panier<br>est vide !');
         pastillePanier.style.display = 'none'; 
         fondPanier.style.display ='none'  
         }
@@ -209,97 +209,105 @@ function AfficherPastille(panier){
         pastillePanier.style.display = 'none';
             }
     pastillePanier.innerHTML = nbrArticleTotal; 
+}
+
+class Contact {
+    constructor (firstName, lastName, address, city, email){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.email = email;
     }
-
-
+}
 
 
 function envoyerCommande(){
 
 
 
-let formulaireNom = document.getElementById('contact-nom');
-let formulairePrenom = document.getElementById('contact-prenom');
-let formulaireAdresse = document.getElementById('contact-adresse');
-let formulaireVille = document.getElementById('contact-ville');
-let formulaireMail = document.getElementById('contact-mail');
+    let formulaireNom = document.getElementById('contact-nom');
+    let formulairePrenom = document.getElementById('contact-prenom');
+    let formulaireAdresse = document.getElementById('contact-adresse');
+    let formulaireVille = document.getElementById('contact-ville');
+    let formulaireMail = document.getElementById('contact-mail');
 
-let envoi = document.getElementById('envoyer');
+    let envoi = document.getElementById('envoyer');
+    let formulaire = document.getElementById('formulaire');
+    formulaire.addEventListener('submit',function(){
+    event.preventDefault();    
+    let isValid =  formulaire.checkValidity()
+        if(isValid){
+            let products = [];
+
+            for (let i = 0; i < panierFinal.length; i++){
+                products.push(panierFinal[i].id);
+                console.log(panierFinal[i].id);
+            }
+            let contact = new Contact (formulaireNom.value, formulairePrenom.value, formulaireAdresse.value, formulaireVille.value, formulaireMail.value);
+            let order = {contact, products};
+            console.log(formulaireNom);
+            // let insertPost = async function (data){
+            //     let response = await fetch('http://localhost:3000/api/teddies/order',{
+            //         method: 'POST',
+            //         header: {
+            //             'Content-Type' : 'application/json'
+            //         },
+            //         body: JSON.stringify(data)
+            //     })
+            //     console.log(JSON.stringify(data))
+
+            //     let responseData = await response.json()
+            //     console.log(responseData);
+            // }
+            // insertPost(order)
 
 
+            let paramFetch = {
+                method:'POST',
+                body: JSON.stringify(order),
+                headers: { 'Content-type': "application/json"}
+            };
+
+
+            // fetch('http://localhost:3000/api/teddies/order', paramFetch)
+            //     .then(function(response){
+            //         return (response.json())
+            //         .then(function(response){
+            //             localStorage.setItem('commande', response);
+            //         })
+            //     })
+
+            fetch('http://localhost:3000/api/teddies/order', paramFetch)
+                .then(function(response){
+                    return (response.json())
+                })
+                .then(function(response){
+                    console.log(response)
+                    let commandeId = JSON.stringify(response.orderId);
+                    let commandeContact = JSON.stringify(response.contact);
+                    console.log(commandeId)
+                    console.log(commandeContact)
+                    localStorage.setItem('orderId', commandeId);
+                    localStorage.setItem('contact', commandeContact);
+                })
+                .then(function(){
+                    window.location.href = 'confirmation.html'
+                })
+                
+        
+
+        }
+    })
+}
 
 /////// tableau ID produit
 
-envoi.onclick = (function(){
-    console.log(envoi.onclick)
-    event.preventDefault();
-    let products = [];
-    class Contact {
-        constructor (firstName, lastName, address, city, email){
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.email = email;
-        }
-    }
-    for (let i = 0; i < panierFinal.length; i++){
-        products.push(panierFinal[i].id);
-        console.log(panierFinal[i].id);
-    }
-    let contact = new Contact (formulaireNom.value, formulairePrenom.value, formulaireAdresse.value, formulaireVille.value, formulaireMail.value);
-    let order = {contact, products};
+// envoi.onclick = (function(){
+//     console.log(envoi.onclick)
+//     event.preventDefault();
+//     
 
-    // let insertPost = async function (data){
-    //     let response = await fetch('http://localhost:3000/api/teddies/order',{
-    //         method: 'POST',
-    //         header: {
-    //             'Content-Type' : 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //     console.log(JSON.stringify(data))
-
-    //     let responseData = await response.json()
-    //     console.log(responseData);
-    // }
-    // insertPost(order)
-
-
-    let paramFetch = {
-        method:'POST',
-        body: JSON.stringify(order),
-        headers: { 'Content-type': "application/json"}
-    };
-
-
-    // fetch('http://localhost:3000/api/teddies/order', paramFetch)
-    //     .then(function(response){
-    //         return (response.json())
-    //         .then(function(response){
-    //             localStorage.setItem('commande', response);
-    //         })
-    //     })
-
-        fetch('http://localhost:3000/api/teddies/order', paramFetch)
-            .then(function(response){
-                return (response.json())
-            })
-            .then(function(response){
-                console.log(response)
-                let commandeId = JSON.stringify(response.orderId);
-                let commandeContact = JSON.stringify(response.contact);
-                console.log(commandeId)
-                console.log(commandeContact)
-                localStorage.setItem('orderId', commandeId);
-                localStorage.setItem('contact', commandeContact);
-            })
-            // .then(function(){
-            //     window.location.href = 'confirmation.html'
-            // })
-        
-})
-}
 
 
 
