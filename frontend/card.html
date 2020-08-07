@@ -24,7 +24,7 @@
     <!--/////////////////-->
 
     <header>
-        <div id="orinoco" >
+        <div id="orinoco">
             <img src="image/logo.png" alt="logo">
         </div>
     </header>
@@ -36,27 +36,29 @@
             <div id="icon-left">
                 <div id="icon-home"><a href="home.html"><i class="fas fa-home"></i></a></div>
                 <div class="camera-icon"><a href="#"></a><i class="fas fa-camera"></i></div>
-                <a href="index.html" id="ours"><div class="svg-ours"></div></a>
+                <a href="index.html" id="ours">
+                    <div class="svg-ours"></div>
+                </a>
                 <div class="svg-meuble"><a href="#"></a></div>
             </div>
             <div id="icon-right">
                 <div id="icon-card-align">
                     <div><a href="card.html"><i class="fas fa-shopping-bag"></i></a></div>
                     <div class="card-nbr"></div>
-                </div> 
+                </div>
             </div>
         </div>
     </nav>
     <!--Affichage menu mobile-->
     <div id="wrap">
         <div class="burger">
-          <nav class="nav">
-            <a href="#" id="close">×</a>
-            <a href="home.html">Home</a>
-            <a href="#">Caméras</a>
-            <a href="index.html">Ours en peluche</a>
-            <a href="#">Meubles en chêne</a>
-          </nav>
+            <nav class="nav">
+                <a href="#" id="close">×</a>
+                <a href="home.html">Home</a>
+                <a href="#">Caméras</a>
+                <a href="index.html">Ours en peluche</a>
+                <a href="#">Meubles en chêne</a>
+            </nav>
         </div>
     </div>
     <div id="content">
@@ -67,31 +69,44 @@
         </section>
         <h2>Vos coordonnées</h2>
         <section id="contact">
-            <div id="contact-back">    
+            <div id="contact-back">
                 <form id="formulaire">
-                    <table>
-                        <tr>
-                            <td class="label"><p><label>Nom </label></p></td>
-                            <td><input class="input" id="contact-nom" type="text" name="nom" required></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><p><label>Prénom </label></p></td>
-                            <td><input class="input" id="contact-prenom" type="text" name="prenom" required></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><p><label>Adresse </label></p></td>
-                            <td><input class="input" id="contact-adresse" type="text" name="adresse" required></td>
-                        </tr>
+                    <div>
+                        <div class="label">
+                            <p><label>Nom </label></p>
+                        </div>
+                        <div class="champ-input"><input class="input" id="contact-nom" type="text" name="nom" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="label">
+                            <p><label>Prénom </label></p>
+                        </div>
+                        <div class="champ-input"><input class="input" id="contact-prenom" type="text" name="prenom" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="label">
+                            <p><label>Adresse </label></p>
+                        </div>
+                        <div class="champ-input"><input class="input" id="contact-adresse" type="text" name="adresse" required>
+                        </div>
+                    </div>
 
-                        <tr>
-                            <td class="label"><p><label>Ville  </label></p></td>
-                            <td><input class="input" id="contact-ville" type="text" name="ville" required></td>
-                        </tr>
-                        <tr>
-                            <td class="label"><p><label>Email  </label></p></td>
-                            <td><input class="input" id="contact-mail" type="text" name="email" required></td>
-                        </tr>               
-                    </table>
+                    <div>
+                        <div class="label">
+                            <p><label>Ville </label></p>
+                        </div>
+                        <div class="champ-input"><input class="input" id="contact-ville" type="text" name="ville" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="label">
+                            <p><label>Email </label></p>
+                        </div>
+                        <div class="champ-input"><input class="input" id="contact-mail" type="email" name="email" required>
+                        </div>
+                    </div>
                     <button id="envoyer" type="submit">Envoyer</button>
 
                 </form>
@@ -108,6 +123,9 @@
     </footer>
     <div id="ours-dessin"><img src="image/ours-dessin.jpg" alt="ours dessin"></div>
 </body>
+<script type="text/javascript" src="function_pastille.js"></script>
+<script type="text/javascript" src="custum_alert.js"></script>
+<script type="text/javascript" src="class.js"></script>
 <script type="text/javascript" src="card.js"></script>
 
 </html>

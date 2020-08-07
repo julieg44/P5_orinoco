@@ -1,48 +1,20 @@
-
+//// récupération des articles ajoutés préalablement au panier et stockés dans le localStorage
 let panierFinal = JSON.parse(localStorage.getItem('article'))
-    console.log(panierFinal);
 
-/// custum alert///
-function custumAlert (){
-    this.render = function(dialog){
-        let winW = window.innerWidth;
-        let winH = window.innerHeight;
-        let popup = document.getElementById ('popup');
-        let popupContent = document.getElementById ('popup-content');
-        popup.style.display = 'block';
-        popup.style.height = winH + 'px';
-        popupContent.style.left = (winW/2) - (400 * .5) + 'px';
-        if (winW < 569){
-            popupContent.style.left = (winW/2) - (260 * .5) + 'px';
-        }
-        popupContent.style.display = "block";
-        document.getElementById('popup-head').innerHTML = ' <button id="fermer"> X </button> ';
-        document.getElementById('popup-text').innerHTML = dialog;
-        let buttonAlert = document.getElementById('fermer');
-        buttonAlert.addEventListener ('click', function(){
-            // document.getElementById('popup').style.display = 'none';
-            // document.getElementById('popup-content').style.display = 'none';
-            window.location.href = 'index.html'
-        })
-    }
-    this.ok = function(){
-        document.getElementById('popup').style.display = 'none';
-        document.getElementById('popup-content').style.display = 'none';
-    }
-}
-var alert = new custumAlert();
-
+let alert = new custumAlert();
 let fondPanier = document.getElementById('card-back');
 
+/////affichage du contenu du panier :
+
+//// alerte utilisateur si le panier est vide => redirection vers accueil via la function Alert
 if (panierFinal === null){
-    alert.render('Votre panier<br> est vide !');
+    alert.render('Votre panier<br>est vide !');
     fondPanier.style.display ='none'  
 }   
 
-
-
-
+/////// function pour afficher dynamiquement le contenu du panier (qte/nom/couleur/prix)
 function afficherPanier(panierFinal){
+    ////// mise en forme pour chaque ligne article /////
     panierFinal.forEach(function(produit){
         let ligneArticlePanier = document.createElement('div'); 
         ligneArticlePanier.classList.add ('article-panier'); 
@@ -68,76 +40,51 @@ function afficherPanier(panierFinal){
         panierName.innerHTML = produit.article;  
         panierName.appendChild(couleurName);
 
+        /////// fonction pour gérer la décrémentation d'un article du panier et de l'affichage et sa mise a jour dans le localStorage  /////
+        remove.onclick = function(){
+            produit.qte --  
+            localStorage.setItem('article', JSON.stringify(panierFinal));
+            panierPrice.innerHTML = produit.qte * produit.price / 100 + '€';
+            panierNbr.innerHTML = produit.qte;
 
-        
+            ////mise à jour total final
+            let prixTotal = 0 
+            panierFinal.forEach(function(lignePanier){
+                let resultat = lignePanier.price / 100 * lignePanier.qte;
+                prixTotal = prixTotal + resultat;
+            })
+            let totalPanierBloc = document.getElementsByClassName('total-panier-bloc');
+            afficherPastille(panierFinal);
+            totalPanierBloc[0].innerHTML = prixTotal + '€';
 
-
-            remove.onclick = function(){
-                produit.qte --  
-                localStorage.setItem('article', JSON.stringify(panierFinal));
-                // panierFinal = JSON.parse(localStorage.getItem('article'));
-                console.log(panierFinal); 
-                panierPrice.innerHTML = produit.qte * produit.price / 100 + '€';
-                panierNbr.innerHTML = produit.qte;
-                    ////mise à jour total final
-                    let prixTotal = 0 
-                    panierFinal.forEach(function(lignePanier){
-                        let resultat = lignePanier.price / 100 * lignePanier.qte;
-                        prixTotal = prixTotal + resultat;
-                    })
-                    let totalPanierBloc = document.getElementsByClassName('total-panier-bloc');
-                    console.log(totalPanierBloc);
-                    AfficherPastille(panierFinal);
-                    totalPanierBloc[0].innerHTML = prixTotal + '€';
-                    /////////////////////////
-                
-                if (produit.qte === 0){
-                    panierFinal = panierFinal.filter(function(item){
-                        return item !== produit;
-                    })
-                fondPanier.removeChild(ligneArticlePanier);
-                localStorage.setItem('article', JSON.stringify(panierFinal)); 
-                // panierFinal = JSON.parse(localStorage.getItem('article'));
-                console.log(panierFinal.length);
-                AfficherPastille(panierFinal);
-                }
-                if (panierFinal.length === 0){
-                    localStorage.clear();
-                    // panierFinal = JSON.parse(localStorage.getItem('article'));
-                    let ligneTotalPanier = document.querySelector('.total-panier');
-                    console.log(ligneTotalPanier);
-                    fondPanier.removeChild(ligneTotalPanier);
-                    let ligneViderPanier = document.querySelector('.vider-panier');
-                    fondPanier.removeChild(ligneViderPanier);
-                    AfficherPastille(panierFinal);
-                    alert.render('Votre panier<br>est vide !')
-                }
+            //////Suppression de la ligne article du panier et de l'affichage si la qte de l'article atteint 0,
+            if (produit.qte === 0){
+                panierFinal = panierFinal.filter(function(item){
+                    return item !== produit;
+                })
+            fondPanier.removeChild(ligneArticlePanier);
+            localStorage.setItem('article', JSON.stringify(panierFinal)); 
+            afficherPastille(panierFinal);
             }
-         //////////////////
+            //////Gestion du panier et de l'affichage si les articles sont tous supprimés manuellement,
+            if (panierFinal.length === 0){
+                localStorage.clear();
+                let ligneTotalPanier = document.querySelector('.total-panier');
+                fondPanier.removeChild(ligneTotalPanier);
+                fondPanier.style.display ='none';  
+                let ligneViderPanier = document.querySelector('.vider-panier');
+                fondPanier.removeChild(ligneViderPanier);
+                afficherPastille(panierFinal);
+                alert.render('Votre panier<br>est vide !')
+            }
+        }
     })
 }
-// modifierPrixTotal(panierFinal);
-afficherPanier(panierFinal);
-AfficherPrixTotal(panierFinal);
-ViderPanier(panierFinal);
-envoyerCommande(panierFinal);
-
-         // /////// pastille ///////
-         let pastillePanier = document.querySelector('div .card-nbr');
-         if (panierFinal === null){
-             pastillePanier.style.display = 'none';
-         } else {
-             AfficherPastille(panierFinal);
-             pastillePanier.style.display = 'block';
-         }
-
-
-
-function AfficherPrixTotal(panier){
+///// Affichage et calcul du prix total du panier
+function afficherPrixTotal(panier){
     let prixTotal = 0 
     panier.forEach(function(lignePanier){
             let resultat = lignePanier.price / 100 * lignePanier.qte;
-            console.log(resultat);
             prixTotal = prixTotal + resultat;
     }) 
     let ligneTotalPanier = document.createElement('div');
@@ -150,27 +97,14 @@ function AfficherPrixTotal(panier){
     fondPanier.appendChild(ligneTotalPanier);
     ligneTotalPanier.appendChild(totalPanierTitre);
     ligneTotalPanier.appendChild(totalPanierBloc);
-    console.log(totalPanierBloc);
     totalPanierBloc.innerHTML = prixTotal + '€';
         if(panierFinal.lenght === 0){
             fondPanier.removeChild(ligneTotalPanier);
         }
     }
 
-function modifierPrixTotal(panier){
-    let prixTotal = 0 
-    panier.forEach(function(lignePanier){
-            let resultat = lignePanier.price / 100 * lignePanier.qte;
-            prixTotal = prixTotal + resultat;
-    })
-    let remove = document.getElementsByClassName('remove');
-    remove.onclick = function(){
-    let totalPanierBloc = document.getElementsByClassName('total-panier-bloc');
-    console.log(totalPanierBloc);
-    totalPanierBloc.innerHTML = prixTotal + '€';
-    }
-}
 
+///// Affichage du bouton et suppression au click de l'ensemble des articles du panier/ mise à jour du localStorage et redirection vers accueil
 function ViderPanier(panier){
     let ligneViderPanier = document.createElement('div');
     ligneViderPanier.classList.add('vider-panier');
@@ -183,7 +117,7 @@ function ViderPanier(panier){
     fondPanier.appendChild(ligneViderPanier);
     ligneViderPanier.appendChild(viderPanierTitre);
     ligneViderPanier.appendChild(viderPanierBloc);
-        viderPanierBloc.onclick = function(){
+    viderPanierBloc.onclick = function(){
         let ligneTotalPanier = document.querySelector('.total-panier');
         fondPanier.removeChild(ligneTotalPanier);
         fondPanier.removeChild(ligneViderPanier);
@@ -193,120 +127,71 @@ function ViderPanier(panier){
             })
         localStorage.clear(); 
         alert.render('Votre panier<br>est vide !');
+        let pastillePanier = document.querySelector('div .card-nbr');
         pastillePanier.style.display = 'none'; 
         fondPanier.style.display ='none'  
-        }
-}
-
-function AfficherPastille(panier){
-    let nbrArticleTotal = 0 
-    panier.forEach(function(lignePanier){
-            let resultat = parseInt(lignePanier.qte);
-            nbrArticleTotal = nbrArticleTotal + resultat;
-    }) 
-    let pastillePanier = document.querySelector('div .card-nbr');
-    if(nbrArticleTotal === 0){
-        pastillePanier.style.display = 'none';
-            }
-    pastillePanier.innerHTML = nbrArticleTotal; 
-}
-
-class Contact {
-    constructor (firstName, lastName, address, city, email){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.email = email;
     }
 }
 
+////// formulaire de contact ///////
+
 
 function envoyerCommande(){
-
-
-
+    ///// recupératioin des inputs du DOM
     let formulaireNom = document.getElementById('contact-nom');
     let formulairePrenom = document.getElementById('contact-prenom');
     let formulaireAdresse = document.getElementById('contact-adresse');
     let formulaireVille = document.getElementById('contact-ville');
     let formulaireMail = document.getElementById('contact-mail');
-
-    let envoi = document.getElementById('envoyer');
     let formulaire = document.getElementById('formulaire');
+    ///// ecoute de la soumission du formulaire et de la validité des champs requis
     formulaire.addEventListener('submit',function(){
     event.preventDefault();    
-    let isValid =  formulaire.checkValidity()
+    let isValid = formulaire.checkValidity();
+        //// si les champs sont correctement remplis
         if(isValid){
+            //// recuperation des Id des produits
             let products = [];
-
             for (let i = 0; i < panierFinal.length; i++){
                 products.push(panierFinal[i].id);
-                console.log(panierFinal[i].id);
             }
+            //// recuperation des valeurs de contact saisies
             let contact = new Contact (formulaireNom.value, formulairePrenom.value, formulaireAdresse.value, formulaireVille.value, formulaireMail.value);
+            /// création de la variable a envoyer à l'API
             let order = {contact, products};
-            console.log(formulaireNom);
-            // let insertPost = async function (data){
-            //     let response = await fetch('http://localhost:3000/api/teddies/order',{
-            //         method: 'POST',
-            //         header: {
-            //             'Content-Type' : 'application/json'
-            //         },
-            //         body: JSON.stringify(data)
-            //     })
-            //     console.log(JSON.stringify(data))
 
-            //     let responseData = await response.json()
-            //     console.log(responseData);
-            // }
-            // insertPost(order)
-
-
+            //// requète POST à l'API de products et contact
             let paramFetch = {
                 method:'POST',
                 body: JSON.stringify(order),
                 headers: { 'Content-type': "application/json"}
             };
 
-
-            // fetch('http://localhost:3000/api/teddies/order', paramFetch)
-            //     .then(function(response){
-            //         return (response.json())
-            //         .then(function(response){
-            //             localStorage.setItem('commande', response);
-            //         })
-            //     })
-
             fetch('http://localhost:3000/api/teddies/order', paramFetch)
+                ///// reponse de l'API et stockage de celle-ci dans le localStorage
                 .then(function(response){
                     return (response.json())
                 })
                 .then(function(response){
-                    console.log(response)
                     let commandeId = JSON.stringify(response.orderId);
                     let commandeContact = JSON.stringify(response.contact);
-                    console.log(commandeId)
-                    console.log(commandeContact)
                     localStorage.setItem('orderId', commandeId);
                     localStorage.setItem('contact', commandeContact);
                 })
+                //// redirection vers la page confirmation de commande
                 .then(function(){
                     window.location.href = 'confirmation.html'
                 })
-                
-        
-
-        }
+        } 
     })
 }
+afficherPastille(panierFinal);
+afficherPanier(panierFinal);
+afficherPrixTotal(panierFinal);
+ViderPanier(panierFinal);
+envoyerCommande(panierFinal);
 
-/////// tableau ID produit
-
-// envoi.onclick = (function(){
-//     console.log(envoi.onclick)
-//     event.preventDefault();
-//     
+     
 
 
 
