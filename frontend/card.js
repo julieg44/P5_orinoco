@@ -65,7 +65,8 @@ function afficherPanier(panierFinal){
             fondPanier.removeChild(ligneArticlePanier);
             localStorage.setItem('article', JSON.stringify(panierFinal)); 
             afficherPastille(panierFinal);
-            }
+        }
+        
             //////Gestion du panier et de l'affichage si les articles sont tous supprimés manuellement,
             if (panierFinal.length === 0){
                 localStorage.clear();

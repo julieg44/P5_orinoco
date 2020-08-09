@@ -3,13 +3,13 @@ let id = params.get("id");
 
 
 ///// Requete à  l'API pour recuperer l'element correspondant à l'ID
-const oursSelect = async function () {
+const articleSelect = async function () {
     let response = await fetch("http://localhost:3000/api/teddies/" + id);
-    let oursDetail = await response.json()
-    return oursDetail;
+    let articleDetail = await response.json()
+    return articleDetail;
 }
 
-oursSelect().then(function (oursDetail) {
+articleSelect().then(function (articleDetail) {
     ///mise en forme de l'article
 
     let section = document.querySelector('section');
@@ -99,16 +99,16 @@ oursSelect().then(function (oursDetail) {
 
     //  Replissage du contenu de la fiche article
 
-    let imageOurs = document.querySelector('.image-product img');
-    imageOurs.src = oursDetail.imageUrl;
+    let imageArticle = document.querySelector('.image-product img');
+    imageArticle.src = articleDetail.imageUrl;
     let name = document.querySelectorAll('#first-bloc h2');
     let nameMobile = document.querySelector('#first-bloc-mobile h2');
-    name[0].innerHTML = oursDetail.name;
-    nameMobile.innerHTML = oursDetail.name;
+    name[0].innerHTML = articleDetail.name;
+    nameMobile.innerHTML = articleDetail.name;
     let description = document.querySelector('.description p');
-    description.innerHTML = oursDetail.description;
+    description.innerHTML = articleDetail.description;
     let price = document.querySelector('.prix p');
-    price.innerHTML = oursDetail.price / 100 + '€';
+    price.innerHTML = articleDetail.price / 100 + '€';
 
 
     //   Creation des couleurs dans le selecteur   ///////////
@@ -116,10 +116,10 @@ oursSelect().then(function (oursDetail) {
     let selectColor = document.getElementById('colors1');
     let selectNbr = document.getElementById('nbr1');
 
-    for (let i = 0; i < oursDetail.colors.length; i++) {
+    for (let i = 0; i < articleDetail.colors.length; i++) {
         let optionColor = document.createElement('option');
-        optionColor.value = oursDetail.colors[i];
-        optionColor.innerHTML = oursDetail.colors[i];
+        optionColor.value = articleDetail.colors[i];
+        optionColor.innerHTML = articleDetail.colors[i];
         selectColor.appendChild(optionColor);
     }
 
@@ -162,10 +162,9 @@ oursSelect().then(function (oursDetail) {
     ////////// panier ////////////
     let ajoutPanierBtn = document.getElementById('ajouter');
     ajoutPanierBtn.addEventListener('click', function (e) {
-        for (let i = 0; i < oursDetail.colors.length; i++) {
-            if (oursDetail.colors[i] == colorTeddySelect) {
+        for (let i = 0; i < articleDetail.colors.length; i++) {
+            if (articleDetail.colors[i] == colorTeddySelect) {
                 let NouveauArticle = true;
-                console.log(panierFinal);
 
                 if (panierFinal === null) {
                     panierFinal = [];
@@ -182,10 +181,10 @@ oursSelect().then(function (oursDetail) {
                 // si l'article n'a pas deja ete selectionné une fois
                 if (NouveauArticle === true) {
                     panierFinal.push({
-                        'article': oursDetail.name,
-                        'price': oursDetail.price,
+                        'article': articleDetail.name,
+                        'price': articleDetail.price,
                         'color': colorTeddySelect,
-                        'id': oursDetail._id,
+                        'id': articleDetail._id,
                         'qte': nbrTeddySelect
                     });
                     localStorage.setItem('article', JSON.stringify(panierFinal));

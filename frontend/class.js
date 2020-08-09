@@ -1,5 +1,5 @@
 /// base de construction d'un article
-class teddy {
+class article {
     constructor (color, description, image, name, price, _id){
         this.color = color;
         this.description = description;

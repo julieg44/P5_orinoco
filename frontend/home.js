@@ -10,7 +10,7 @@ let teddyArticle = [];
 ours().then(function (data){
     /// creation de chaque instance et stockage dans un tableau
     for (let i=0; i < data.length; i++){
-        let teddyModele = new teddy (data[i].colors, data[i].description, data[i].imageUrl, data[i].name, data[i].price, data[i]._id);
+        let teddyModele = new article (data[i].colors, data[i].description, data[i].imageUrl, data[i].name, data[i].price, data[i]._id);
         teddyArticle.push(teddyModele);
     }
     
@@ -22,7 +22,7 @@ ours().then(function (data){
         let article = document.createElement('article');
         article.classList.add('article', 'product-color' + [i]);
         let divNom = document.createElement('div');
-        let nomOurs = document.createElement('h2');
+        let nomArticle = document.createElement('h2');
         let divImage = document.createElement('div');
         divImage.classList.add('image-product');
         let imageArticle = document.createElement('img');
@@ -55,8 +55,8 @@ ours().then(function (data){
         description.innerHTML = teddyArticle[i].description;
         divInfo.appendChild(divDescription);
         divInfo.appendChild(divAlign);
-        divNom.appendChild(nomOurs);
-        nomOurs.innerHTML = teddyArticle[i].name;
+        divNom.appendChild(nomArticle);
+        nomArticle.innerHTML = teddyArticle[i].name;
         divImage.appendChild(imageArticle);
         imageArticle.src = teddyArticle[i].image;
         article.appendChild(divNom);
