@@ -31,6 +31,8 @@ h2{
       border: none;
       padding: 2%;
       font-size: 0.9rem;
+      margin-top: 5%;
+      margin-bottom: 5%;
       @include tablette_ecran{ 
       padding: 1%;
       font-size: 1.2rem;
@@ -124,7 +126,6 @@ h2{
   
   ///formulaire 
   
-  
   form {
     width: 100%;
     #civilite p, #adresse p, #mail p{
@@ -134,17 +135,21 @@ h2{
   }
   
   form > div{
-    display: flex;
+    @include tablette_ecran{
+      display: flex;
+    }
   }
   
   .label{
     width: 20%;
-    text-align: right;
+    text-align: left;
     font-family: 'Pacifico', cursive;
     font-size: 1rem;
     color: #fff;
     vertical-align: top;
     @include tablette_ecran{
+      width: 20%;
+      text-align: right;
       font-size: 1.3rem;
       margin-right: 2%;
       margin-bottom: 2%;
@@ -158,7 +163,10 @@ h2{
   .input{
     border: none;
     height: 30px;
-    width: 80%;
+    width: 100%;
+    @include tablette_ecran{
+      width: 80%;
+    }
   }
   
   #cp-mobile{
