@@ -18,7 +18,7 @@ function custumAlert (){
         buttonAlert.addEventListener ('click', function(){
             // document.getElementById('popup').style.display = 'none';
             // document.getElementById('popup-content').style.display = 'none';
-            window.location.href = 'index.html'
+            window.location.href = 'accueil.html'
         })
     }
     this.ok = function(){
