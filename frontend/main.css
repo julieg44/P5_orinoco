@@ -362,6 +362,7 @@ footer li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 5%;
 }
 @media screen and (min-width: 570px) {
   #section-home {
@@ -488,6 +489,27 @@ footer li {
 
 #furniture .acces-pages {
   background-color: #8f5bfe;
+}
+
+div#teddies {
+  width: 90%;
+  background: #fff;
+  font-family: pacifico;
+  font-size: 1.5rem;
+  margin-top: 5%;
+  text-align: center;
+  padding: 2%;
+  margin: auto;
+  color: #ac6bab;
+}
+@media screen and (min-width: 570px) {
+  div#teddies {
+    width: 45%;
+  }
+}
+div#teddies .fas {
+  color: #ac6bab;
+  font-size: 2rem;
 }
 
 #content-catalogue {

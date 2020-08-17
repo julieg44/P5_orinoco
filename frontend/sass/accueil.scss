@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 5%;
     @include tablette_ecran{ 
     flex-direction: row;
     justify-content: space-around;
@@ -115,11 +116,30 @@
     }
   }
   #camera .acces-pages{
-    background-color: #e68a08;
+    background-color: $logo1;
   }
   #bear .acces-pages{
-    background-color: #ac6bab;
+    background-color: $logo2;
   }
   #furniture .acces-pages{
-    background-color: #8f5bfe;
+    background-color: $logo3;
+  }
+
+  div#teddies {
+    width: 90%;
+    background: #fff;
+    font-family: pacifico;
+    font-size: 1.5rem;
+    margin-top: 5%;
+    text-align: center;
+    padding: 2%;
+    margin: auto;
+    color: $logo2;
+    @include tablette_ecran{
+      width: 45%;
+    }
+    .fas {
+      color: $logo2;
+      font-size: 2rem;
+    }
   }
