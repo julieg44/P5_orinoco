@@ -10,7 +10,7 @@ body {
 }
 @media screen and (min-width: 769px) {
   body {
-    background-image: url(image/ours_fond.png);
+    background-image: url(./image/ours_fond.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: -330px;
@@ -177,17 +177,17 @@ header #orinoco img {
   }
 }
 #navigation #icon-left .svg-ours {
-  mask: url(image/ours-icon.svg);
+  mask: url(./image/ours-icon.svg);
   mask-size: 35px;
   -webkit-mask-size: 35px;
-  -webkit-mask: url(image/ours-icon.svg);
+  -webkit-mask: url(./image/ours-icon.svg);
   -webkit-mask-repeat: no-repeat;
   width: 37px;
   height: 30px;
 }
 #navigation #icon-left .svg-meuble {
-  mask: url(image/furniture-icon2.svg);
-  -webkit-mask: url(image/furniture-icon2.svg);
+  mask: url(./image/furniture-icon2.svg);
+  -webkit-mask: url(./image/furniture-icon2.svg);
   -webkit-mask-repeat: no-repeat;
   mask-size: 52px;
   -webkit-mask-size: 52px;
