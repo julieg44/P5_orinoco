@@ -16,8 +16,6 @@ function custumAlert (){
         document.getElementById('popup-text').innerHTML = dialog;
         let buttonAlert = document.getElementById('fermer');
         buttonAlert.addEventListener ('click', function(){
-            // document.getElementById('popup').style.display = 'none';
-            // document.getElementById('popup-content').style.display = 'none';
             window.location.href = 'accueil.html'
         })
     }

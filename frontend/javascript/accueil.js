@@ -10,7 +10,7 @@ let teddyArticle = [];
 ours().then(function (data){
     /// creation de chaque instance et stockage dans un tableau
     for (let i=0; i < data.length; i++){
-        let teddyModele = new article (data[i].colors, data[i].description, data[i].imageUrl, data[i].name, data[i].price, data[i]._id);
+        let teddyModele = new Article (data[i].colors, data[i].description, data[i].imageUrl, data[i].name, data[i].price, data[i]._id);
         teddyArticle.push(teddyModele);
     }
     
