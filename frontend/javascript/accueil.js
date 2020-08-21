@@ -65,15 +65,14 @@ ours().then(function (data){
         section.appendChild(article);
     }
 })
+.catch(function(error){ 
+    alert('une erreur s\'est produite' + error);
+});
 
 /// recupération du panier (pour l'affichage de la pastille)
 let panierFinal = JSON.parse(localStorage.getItem('article'))
 
 
 /////// pastille panier ///////
-let pastillePanier = document.querySelector('div .card-nbr');
-if (panierFinal === null) {
-    pastillePanier.style.display = 'none';
-} else {
-    afficherPastille(panierFinal);
-}
+
+afficherPastille(panierFinal);

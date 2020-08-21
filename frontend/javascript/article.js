@@ -195,3 +195,7 @@ articleSelect().then(function (articleDetail) {
     })
 })
 
+.catch(function(error){ 
+    alert('impossible d\'acceder à la page article' + error);
+});
+

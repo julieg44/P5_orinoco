@@ -183,6 +183,9 @@ function envoyerCommande(){
                 .then(function(){
                     window.location.href = 'confirmation.html'
                 })
+                .catch(function(error){ 
+                    alert('impossible de valider la commande' + error);
+                });
         } 
     })
 }
